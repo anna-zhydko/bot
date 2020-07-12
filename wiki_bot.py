@@ -8,7 +8,7 @@ from googletrans import Translator
 from langdetect import detect
 
 
-bot = telebot.TeleBot('1268554302:AAF5BelJocgHqS6oEjmlQIE9FAu-GPXzPG8')
+#bot = telebot.TeleBot('1268554302:AAF5BelJocgHqS6oEjmlQIE9FAu-GPXzPG8')
 
 
 @bot.message_handler(commands=['start'])
