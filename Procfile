@@ -1,0 +1,1 @@
+worker: python wiki_bot.py
