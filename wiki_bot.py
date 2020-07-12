@@ -14,23 +14,23 @@ bot = telebot.TeleBot('1268554302:AAF5BelJocgHqS6oEjmlQIE9FAu-GPXzPG8')
 @bot.message_handler(commands=['start'])
 def start(message):
     user = bot.get_chat_member(message.chat.id, message.from_user.id)  # get user information
-    connection = create_connection('localhost', 'root', 'toor', 'Users')  # connection to DB "Users", MySQL
-    create_tbl_users = (
-        "CREATE TABLE Information ("
-        "User_id VARCHAR(15) NOT NULL,"
-        "First_name VARCHAR(50) NOT NULL,"
-        "Lang_code VARCHAR(10) NOT NULL,"
-        "Status VARCHAR(15) NOT NULL)"
-    )
+#     connection = create_connection('localhost', 'root', 'toor', 'Users')  # connection to DB "Users", MySQL
+#     create_tbl_users = (
+#         "CREATE TABLE Information ("
+#         "User_id VARCHAR(15) NOT NULL,"
+#         "First_name VARCHAR(50) NOT NULL,"
+#         "Lang_code VARCHAR(10) NOT NULL,"
+#         "Status VARCHAR(15) NOT NULL)"
+#     )
 
-    # make_query(connection, create_tbl_users, 'CREATE TABLE USERS') # Creates table users. (Already exists)
-    insert_user = (
-        "INSERT INTO Information "
-        "(User_id, First_name, Lang_code, Status) "
-        "VALUES (%s, %s, %s, %s)"
-    )
-    data_users = (user.user.id, user.user.first_name, user.user.language_code, user.status)  # values to past
-    make_query(connection, insert_user, 'INSERT INTO INFORMATION', data_users)
+#     # make_query(connection, create_tbl_users, 'CREATE TABLE USERS') # Creates table users. (Already exists)
+#     insert_user = (
+#         "INSERT INTO Information "
+#         "(User_id, First_name, Lang_code, Status) "
+#         "VALUES (%s, %s, %s, %s)"
+#     )
+#     data_users = (user.user.id, user.user.first_name, user.user.language_code, user.status)  # values to past
+#     make_query(connection, insert_user, 'INSERT INTO INFORMATION', data_users)
     source_markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)  # virtual Keyboard
     source_markup_btn1 = types.KeyboardButton('/help')
     source_markup.add(source_markup_btn1)
