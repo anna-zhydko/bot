@@ -33,7 +33,7 @@ psutil==5.7.0
 pycryptodome==3.9.4
 pyspellchecker==0.5.4
 pyTelegramBotAPI==3.7.1
-requests==2.7.0
+requests==2.20.0
 rfc3986==1.4.0
 six==1.15.0
 sniffio==1.1.0
