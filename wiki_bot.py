@@ -8,29 +8,13 @@ from googletrans import Translator
 from langdetect import detect
 
 
-#bot = telebot.TeleBot('token')
+bot = telebot.TeleBot('token')
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     user = bot.get_chat_member(message.chat.id, message.from_user.id)  # get user information
-#     connection = create_connection('localhost', 'root', 'toor', 'Users')  # connection to DB "Users", MySQL
-#     create_tbl_users = (
-#         "CREATE TABLE Information ("
-#         "User_id VARCHAR(15) NOT NULL,"
-#         "First_name VARCHAR(50) NOT NULL,"
-#         "Lang_code VARCHAR(10) NOT NULL,"
-#         "Status VARCHAR(15) NOT NULL)"
-#     )
 
-#     # make_query(connection, create_tbl_users, 'CREATE TABLE USERS') # Creates table users. (Already exists)
-#     insert_user = (
-#         "INSERT INTO Information "
-#         "(User_id, First_name, Lang_code, Status) "
-#         "VALUES (%s, %s, %s, %s)"
-#     )
-#     data_users = (user.user.id, user.user.first_name, user.user.language_code, user.status)  # values to past
-#     make_query(connection, insert_user, 'INSERT INTO INFORMATION', data_users)
     source_markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)  # virtual Keyboard
     source_markup_btn1 = types.KeyboardButton('/help')
     source_markup.add(source_markup_btn1)
@@ -87,50 +71,10 @@ def get_info(page):
     for description in page.find('div', id='mw-content-text').findChildren('p', recursive=False):
         return description.text
 
-
-# писать повторяющийся код при вызове функции и передавать объект супа
+    
 def get_photo(page):
     photo = page.find('a', class_="image image-thumbnail").get('href')
     return photo
-
-
-# creates connection to MySQL
-def create_connection(host_name, user_name, password, db):
-    connection = None
-    try:
-        connection = mysql.connector.connect(
-            host = host_name,
-            user = user_name,
-            passwd = password,
-            database = db
-        )
-        # print('Connection to MySQL DB is successful')
-    except Error as e:
-        pass
-        # print(f" The error'{e}'occurred")
-    return connection
-
-
-def create_db(connection, query):
-    cursor = connection.cursor()
-    try:
-        cursor.execute(query)
-        # print('DB created successfully')
-    except Error as e:
-        pass
-        # print(f"The error '{e}' occurred")
-
-
-# makes any query
-def make_query(connection, query, name, data=''):
-    cursor = connection.cursor()
-    try:
-        cursor.execute(query, data) if data != '' else cursor.execute(query)
-        connection.commit()
-        # print(f"The query '{name}' has occurred successfully")
-    except Error as e:
-        pass
-        # print(f"The error '{e}' has occurred")
 
 
 bot.polling(none_stop=True)  # Long Polling. none_stop=True - bot trying not to stop because of any errors
