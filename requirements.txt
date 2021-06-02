@@ -38,7 +38,7 @@ rfc3986==1.4.0
 six==1.15.0
 sniffio==1.1.0
 soupsieve==2.0.1
-urllib3==1.25.7
+urllib3==1.26.5
 virtualenv==20.0.25
 virtualenv-clone==0.5.4
 webencodings==0.5.1
